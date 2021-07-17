@@ -1,9 +1,11 @@
+import { observer } from "mobx-react";
 import React from "react";
 import styled from "styled-components";
 import components from "../components";
+import store from "../store";
 
 const Container = styled.div`
-    width: 80%;
+    width: 90%;
     height: 80%;
     background-color: white;
     border-radius: 3%;
@@ -21,6 +23,9 @@ const Top = styled.div`
 `;
 const Mid = styled.div`
     height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 const Bot = styled.div`
     height: 10%;
@@ -36,20 +41,23 @@ const BotText = styled.span`
     font-weight: 600;
 `;
 
-const MainContainer = () => {
-    const { Today } = components;
+const MainContainer = observer(() => {
+    const { Today, Todolist } = components;
+    const { todoStore } = store;
     return (
         <Container>
             <Top>
                 <Today />
             </Top>
-            <Mid></Mid>
+            <Mid>
+                <Todolist />
+            </Mid>
             <Bot>
-                <BotText>📃 Task : 0</BotText>
+                <BotText>📃 Task : {todoStore.todoList.length ? todoStore.todoList.length : 0}</BotText>
                 <BotText>Add Task 📝</BotText>
             </Bot>
         </Container>
     );
-};
+});
 
 export default MainContainer;
