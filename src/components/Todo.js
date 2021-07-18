@@ -16,12 +16,12 @@ const Container = styled.div`
     cursor: pointer;
 `;
 const CheckBox = styled.input`
-    width: 5%;
-    height: 60%;
+    width: 4%;
+    height: 50%;
     cursor: pointer;
 `;
 const Title = styled.span`
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     /* background-color: black; */
     width: 50%;
 `;
@@ -38,7 +38,7 @@ const DelBtn = styled.span`
     width: 6%;
 `;
 const Todo = ({ id, title, content, create_date, checked, onToggle, onDelete }) => {
-    const { TodoModal } = components;
+    const { DetailModal } = components;
     const [modalOpen, setModalOpen] = useState(false);
     const onModalClose = () => {
         console.log(modalOpen);
@@ -54,7 +54,7 @@ const Todo = ({ id, title, content, create_date, checked, onToggle, onDelete }) 
             <Title onClick={() => onModalOpen()}>{title}</Title>
             <DateText>{create_date}</DateText>
             <DelBtn onClick={() => onDelete(id)}>❌</DelBtn>
-            <TodoModal title={title} content={content} onRequestClose={onModalClose} isOpen={modalOpen} />
+            <DetailModal title={title} content={content} onRequestClose={onModalClose} isOpen={modalOpen} />
         </Container>
     );
 };

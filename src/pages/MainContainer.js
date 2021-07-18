@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import components from "../components";
 import store from "../store";
@@ -42,8 +42,19 @@ const BotText = styled.span`
 `;
 
 const MainContainer = observer(() => {
-    const { Today, Todolist } = components;
+    const { Today, Todolist, AddModal } = components;
     const { todoStore } = store;
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const onModalClose = () => {
+        console.log(modalOpen);
+        setModalOpen(false);
+    };
+    const onModalOpen = () => {
+        console.log(modalOpen);
+        setModalOpen(true);
+    };
+
     return (
         <Container>
             <Top>
@@ -54,7 +65,8 @@ const MainContainer = observer(() => {
             </Mid>
             <Bot>
                 <BotText>📃 Task : {todoStore.todoList.length ? todoStore.todoList.length : 0}</BotText>
-                <BotText>Add Task 📝</BotText>
+                <BotText onClick={onModalOpen}>Add Task 📝</BotText>
+                <AddModal onRequestClose={onModalClose} isOpen={modalOpen} />
             </Bot>
         </Container>
     );

@@ -29,7 +29,7 @@ const customStyles = {
 };
 
 const ModalHeader = styled.div`
-    height: 20%;
+    height: 18%;
     width: 100%;
     background-color: rgb(125, 140, 255);
     display: flex;
@@ -52,7 +52,7 @@ const CloseBtn = styled.span`
 `;
 const ModalBody = styled.div`
     background-color: white;
-    height: 79%;
+    height: 80%;
     width: 98%;
     display: flex;
     flex-direction: row;
@@ -65,16 +65,17 @@ const ModalBottom = styled.div`
     height: 20%;
 `;
 
-const TodoModal = ({ isOpen, onRequestClose, title, content }) => {
+const DetailModal = ({ isOpen, onRequestClose, title, content }) => {
     return (
         <Modal style={customStyles} ariaHideApp={false} isOpen={isOpen} contentLabel="Selected Todo" onRequestClose={onRequestClose}>
             <ModalHeader>
                 <Title>{title}</Title>
-                <CloseBtn onClick={onRequestClose}>x</CloseBtn>
+                {/* x버튼을 이미지 혹은 아이콘으로 대체할 방법 찾기 */}
+                <CloseBtn onClick={onRequestClose}>X</CloseBtn>
             </ModalHeader>
             <ModalBody />
         </Modal>
     );
 };
 
-export default TodoModal;
+export default DetailModal;
