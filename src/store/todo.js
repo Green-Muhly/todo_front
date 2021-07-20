@@ -41,7 +41,7 @@ class Todo {
     ];
 
     todo = {
-        id: "",
+        id: Math.random().toString(36).slice(2),
         title: "",
         content: "",
         checked: false,
@@ -52,7 +52,24 @@ class Todo {
         makeAutoObservable(this);
     }
 
-    addTodo = () => {};
+    createTodo = (name, value) => {
+        console.log(name, value);
+        this.todo = {
+            ...this.todo,
+            [name]: value,
+        };
+    };
+    addTodo = () => {
+        this.todoList.push(this.todo);
+        this.todo = {
+            id: Math.random().toString(36).slice(2),
+            title: "",
+            content: "",
+            checked: false,
+            create_date: moment().format("YYYY.MM.DD"),
+        };
+        console.log(this.todoList);
+    };
     toggleTodo = (id) => {
         this.todoList = this.todoList.map((todo) => (todo.id === id ? { ...todo, checked: !todo.checked } : todo));
     };

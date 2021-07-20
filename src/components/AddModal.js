@@ -105,7 +105,17 @@ const Button = styled.button`
     color: ${(props) => (props.save === true ? "white" : "rgb(125, 140, 255)")};
     height: 2rem;
 `;
-const AddModal = ({ isOpen, onRequestClose, title, content }) => {
+
+const AddModal = ({ isOpen, onRequestClose, createTodo, addTodo }) => {
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        createTodo(name, value);
+    };
+    const onSave = () => {
+        addTodo();
+        onRequestClose();
+    };
+
     return (
         <Modal style={customStyles} ariaHideApp={false} isOpen={isOpen} contentLabel="Selected Todo" onRequestClose={onRequestClose}>
             <ModalHeader>
@@ -115,11 +125,13 @@ const AddModal = ({ isOpen, onRequestClose, title, content }) => {
             </ModalHeader>
             <ModalBody>
                 <Label>Title</Label>
-                <Input />
+                <Input name="title" onChange={onChange} />
                 <Label>Content</Label>
-                <TextArea required />
+                <TextArea name="content" required onChange={onChange} />
                 <ButtonContainer>
-                    <Button save={true}>저장</Button>
+                    <Button save={true} onClick={onSave}>
+                        저장
+                    </Button>
                     <Button>취소</Button>
                 </ButtonContainer>
             </ModalBody>

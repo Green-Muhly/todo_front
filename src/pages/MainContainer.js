@@ -66,7 +66,7 @@ const MainContainer = observer(() => {
             <Bot>
                 <BotText>📃 Task : {todoStore.todoList.length ? todoStore.todoList.length : 0}</BotText>
                 <BotText onClick={onModalOpen}>Add Task 📝</BotText>
-                <AddModal onRequestClose={onModalClose} isOpen={modalOpen} />
+                <AddModal onRequestClose={onModalClose} isOpen={modalOpen} createTodo={todoStore.createTodo} addTodo={todoStore.addTodo} />
             </Bot>
         </Container>
     );
