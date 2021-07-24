@@ -1,43 +1,44 @@
 import { makeAutoObservable } from "mobx";
 import moment from "moment";
+import swal from "sweetalert";
 
 class Todo {
     todoList = [
-        {
-            id: Math.random().toString(36).slice(2),
-            title: "title1",
-            content: "content1",
-            checked: false,
-            create_date: moment().format("YYYY.MM.DD"),
-        },
-        {
-            id: Math.random().toString(36).slice(2),
-            title: "title2",
-            content: "content2",
-            checked: false,
-            create_date: moment().format("YYYY.MM.DD"),
-        },
-        {
-            id: Math.random().toString(36).slice(2),
-            title: "title3",
-            content: "content3",
-            checked: false,
-            create_date: moment().format("YYYY.MM.DD"),
-        },
+        // {
+        //     id: Math.random().toString(36).slice(2),
+        //     title: "title1",
+        //     content: "content1",
+        //     checked: false,
+        //     create_date: moment().format("YYYY.MM.DD"),
+        // },
+        // {
+        //     id: Math.random().toString(36).slice(2),
+        //     title: "title2",
+        //     content: "content2",
+        //     checked: false,
+        //     create_date: moment().format("YYYY.MM.DD"),
+        // },
+        // {
+        //     id: Math.random().toString(36).slice(2),
+        //     title: "title3",
+        //     content: "content3",
+        //     checked: false,
+        //     create_date: moment().format("YYYY.MM.DD"),
+        // },
         {
             id: Math.random().toString(36).slice(2),
             title: "프로그레시브 웹앱 끝내기",
-            content: "content4",
-            checked: true,
-            create_date: moment().format("YYYY.MM.DD"),
+            content: "기능 파악해보기",
+            checked: false,
+            create_date: moment("2021-07-20").format("YYYY.MM.DD"),
         },
-        {
-            id: Math.random().toString(36).slice(2),
-            title: "title5",
-            content: "content5",
-            checked: true,
-            create_date: moment().format("YYYY.MM.DD"),
-        },
+        // {
+        //     id: Math.random().toString(36).slice(2),
+        //     title: "title5",
+        //     content: "content5",
+        //     checked: true,
+        //     create_date: moment().format("YYYY.MM.DD"),
+        // },
     ];
 
     todo = {
@@ -60,6 +61,14 @@ class Todo {
         };
     };
     addTodo = () => {
+        const { title, content } = this.todo;
+        if (title === "") {
+            swal("title을 채워주세요!", "", "error");
+            return;
+        } else if (content === "") {
+            swal("content을 채워주세요!", "", "error");
+            return;
+        }
         this.todoList.push(this.todo);
         this.todo = {
             id: Math.random().toString(36).slice(2),
