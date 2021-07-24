@@ -37,7 +37,7 @@ const DelBtn = styled.span`
     /* background-color: black; */
     width: 6%;
 `;
-const Todo = ({ id, title, content, create_date, checked, onToggle, onDelete }) => {
+const Todo = ({ id, title, content, create_date, checked, onToggle, onDelete, onUpdate }) => {
     const { DetailModal } = components;
     const [modalOpen, setModalOpen] = useState(false);
     const onModalClose = () => {
@@ -58,6 +58,7 @@ const Todo = ({ id, title, content, create_date, checked, onToggle, onDelete }) 
                 content={content}
                 create_date={create_date}
                 onRequestClose={onModalClose}
+                onUpdate={onUpdate}
                 isOpen={modalOpen}
             />
         </Container>

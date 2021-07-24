@@ -109,10 +109,23 @@ const Input = styled.input`
         font-size: 0.9rem;
     }
 `;
-const DetailModal = ({ isOpen, onRequestClose, title, content, id, create_date }) => {
+const DetailModal = ({ isOpen, onRequestClose, title, content, id, create_date, onUpdate }) => {
     const [isEdit, setIsEdit] = useState(false);
+    const [newTitle, setNewTitle] = useState(title);
+    const [newContent, setNewContent] = useState(content);
     const setState = () => {
         setIsEdit((prev) => !prev);
+    };
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        if (name === "title") setNewTitle(value);
+        else if (name === "content") setNewContent(value);
+    };
+    const updateTodo = () => {
+        console.log(newTitle, newContent);
+        onUpdate(id, newTitle, newContent);
+        setIsEdit(false);
+        onRequestClose();
     };
     return (
         <Modal style={customStyles} ariaHideApp={false} isOpen={isOpen} contentLabel="Selected Todo" onRequestClose={onRequestClose}>
@@ -128,12 +141,18 @@ const DetailModal = ({ isOpen, onRequestClose, title, content, id, create_date }
             </ModalHeader>
             <ModalBody>
                 <Label>TITLE</Label>
-                {isEdit ? <Input name="title" placeholder={title} /> : <Span>{title}</Span>}
+                {isEdit ? <Input name="title" placeholder={title} onChange={onChange} /> : <Span>{title}</Span>}
 
                 <Label>CONTENT</Label>
-                {isEdit ? <Input name="content" placeholder={content} /> : <Span>{content}</Span>}
+                {isEdit ? <Input name="content" placeholder={content} onChange={onChange} /> : <Span>{content}</Span>}
                 <ButtonContainer>
-                    <Button save={true}>수정</Button>
+                    {isEdit ? (
+                        <Button onClick={updateTodo} save={true}>
+                            수정
+                        </Button>
+                    ) : (
+                        <></>
+                    )}
                     <Button onClick={onRequestClose}>취소</Button>
                 </ButtonContainer>
             </ModalBody>

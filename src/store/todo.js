@@ -73,7 +73,9 @@ class Todo {
     toggleTodo = (id) => {
         this.todoList = this.todoList.map((todo) => (todo.id === id ? { ...todo, checked: !todo.checked } : todo));
     };
-    updateTodo = () => {};
+    updateTodo = (id, title, content) => {
+        this.todoList = this.todoList.map((todo) => (todo.id === id ? { ...todo, title, content } : todo));
+    };
     deleteTodo = (id) => {
         console.log(id);
         this.todoList = this.todoList.filter((todo) => todo.id !== id);

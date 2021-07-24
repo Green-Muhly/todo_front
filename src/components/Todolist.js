@@ -19,10 +19,13 @@ const Todolist = observer(() => {
     const onDelete = (id) => {
         todoStore.deleteTodo(id);
     };
+    const onUpdate = (id, title, content) => {
+        todoStore.updateTodo(id, title, content);
+    };
     return (
         <Contianer>
             {todoStore.todoList?.map((todo) => (
-                <Todo key={todo.id} {...todo} onToggle={onToggle} onDelete={onDelete} />
+                <Todo key={todo.id} {...todo} onToggle={onToggle} onDelete={onDelete} onUpdate={onUpdate} />
             ))}
         </Contianer>
     );
