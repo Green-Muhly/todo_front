@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const DateText = styled.span`
     color: rgb(125, 140, 255);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
 `;
 

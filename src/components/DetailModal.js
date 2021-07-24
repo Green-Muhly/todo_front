@@ -60,11 +60,6 @@ const ModalBody = styled.div`
     align-items: center;
     border-radius: 0.3rem;
 `;
-const ModalBottom = styled.div`
-    /* background-color: red; */
-    height: 20%;
-`;
-
 const DetailModal = ({ isOpen, onRequestClose, title, content }) => {
     return (
         <Modal style={customStyles} ariaHideApp={false} isOpen={isOpen} contentLabel="Selected Todo" onRequestClose={onRequestClose}>
@@ -73,7 +68,7 @@ const DetailModal = ({ isOpen, onRequestClose, title, content }) => {
                 {/* x버튼을 이미지 혹은 아이콘으로 대체할 방법 찾기 */}
                 <CloseBtn onClick={onRequestClose}>X</CloseBtn>
             </ModalHeader>
-            <ModalBody />
+            <ModalBody></ModalBody>
         </Modal>
     );
 };

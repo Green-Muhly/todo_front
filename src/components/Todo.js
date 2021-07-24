@@ -41,11 +41,9 @@ const Todo = ({ id, title, content, create_date, checked, onToggle, onDelete }) 
     const { DetailModal } = components;
     const [modalOpen, setModalOpen] = useState(false);
     const onModalClose = () => {
-        console.log(modalOpen);
         setModalOpen(false);
     };
     const onModalOpen = () => {
-        console.log(modalOpen);
         setModalOpen(true);
     };
     return (
@@ -54,7 +52,14 @@ const Todo = ({ id, title, content, create_date, checked, onToggle, onDelete }) 
             <Title onClick={() => onModalOpen()}>{title}</Title>
             <DateText>{create_date}</DateText>
             <DelBtn onClick={() => onDelete(id)}>❌</DelBtn>
-            <DetailModal title={title} content={content} onRequestClose={onModalClose} isOpen={modalOpen} />
+            <DetailModal
+                id={id}
+                title={title}
+                content={content}
+                create_date={create_date}
+                onRequestClose={onModalClose}
+                isOpen={modalOpen}
+            />
         </Container>
     );
 };

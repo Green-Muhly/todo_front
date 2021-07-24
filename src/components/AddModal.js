@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import styled from "styled-components";
-
+import CloseIcon from "@material-ui/icons/Close";
 Modal.setAppElement("#root");
 
 const customStyles = {
@@ -16,12 +16,12 @@ const customStyles = {
         marginRight: "-50%",
         transform: "translate(-50%, -50%)",
         width: "85%",
-        height: "40%",
+        height: "30%",
         // borderRadius: "1rem",
         boxShadow: "2px 2px 2px 0px rgba(0, 0, 0, 0.2)",
-        border: "1px solid rgb(125, 140, 255)",
-        padding: 0,
-        backgroundColor: "rgb(125, 140, 255)",
+        // border: "1px solid ",
+        padding: 10,
+        backgroundColor: "#fff",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -29,24 +29,25 @@ const customStyles = {
 };
 
 const ModalHeader = styled.div`
-    height: 18%;
+    height: 15%;
     width: 100%;
-    background-color: rgb(125, 140, 255);
+    /* background-color: rgb(125, 140, 255); */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 1rem;
 `;
 const Title = styled.h2`
     font-weight: 600;
     font-size: 1.05rem;
     font-family: sans-serif;
-    color: white;
+    color: black;
     width: 80%;
 `;
 const CloseBtn = styled.span`
     cursor: pointer;
-    color: white;
+    color: grey;
     font-size: 1.6rem;
     font-family: sans-serif;
 `;
@@ -62,27 +63,31 @@ const ModalBody = styled.div`
 const Label = styled.div`
     margin-left: 0.5rem;
     /* background-color: red; */
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: bolder;
     color: gray;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
 `;
 const Input = styled.input`
     margin-left: 0.5rem;
     width: 90%;
     border: none;
-    border-bottom: 1px solid gray;
+    border-left: 2px solid #c2c2c2;
     outline: none;
-    font-size: 1rem;
+    padding-left: 0.2rem;
+    font-size: 0.9rem;
     line-height: 1.2rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    ::placeholder {
+        color: #c2c2c2;
+        /* font-weight: bold; */
+        font-size: 1rem;
+    }
 `;
 const TextArea = styled.textarea`
     margin-left: 0.5rem;
     width: 90%;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     outline: none;
     font-size: 1rem;
     padding-left: 0.5rem;
@@ -90,6 +95,11 @@ const TextArea = styled.textarea`
     margin-bottom: 1rem;
     height: 3rem;
     resize: none;
+    ::placeholder {
+        color: #c2c2c2;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
 `;
 const ButtonContainer = styled.div`
     display: flex;
@@ -121,18 +131,20 @@ const AddModal = ({ isOpen, onRequestClose, createTodo, addTodo }) => {
             <ModalHeader>
                 <Title>Add Task</Title>
                 {/* x버튼을 이미지 혹은 아이콘으로 대체할 방법 찾기 */}
-                <CloseBtn onClick={onRequestClose}>X</CloseBtn>
+                <CloseBtn onClick={onRequestClose}>
+                    <CloseIcon />
+                </CloseBtn>
             </ModalHeader>
             <ModalBody>
-                <Label>Title</Label>
-                <Input name="title" onChange={onChange} />
-                <Label>Content</Label>
-                <TextArea name="content" required onChange={onChange} />
+                <Label>TITLE</Label>
+                <Input name="title" onChange={onChange} placeholder="Task Title" />
+                <Label>CONTENT</Label>
+                <Input name="content" onChange={onChange} placeholder="Task Content" />
                 <ButtonContainer>
                     <Button save={true} onClick={onSave}>
                         저장
                     </Button>
-                    <Button>취소</Button>
+                    <Button onClick={onRequestClose}>취소</Button>
                 </ButtonContainer>
             </ModalBody>
         </Modal>
