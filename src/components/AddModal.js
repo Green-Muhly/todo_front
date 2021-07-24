@@ -30,7 +30,7 @@ const customStyles = {
 
 const ModalHeader = styled.div`
     height: 15%;
-    width: 100%;
+    width: 95%;
     /* background-color: rgb(125, 140, 255); */
     display: flex;
     flex-direction: row;
@@ -74,31 +74,14 @@ const Input = styled.input`
     border: none;
     border-left: 2px solid #c2c2c2;
     outline: none;
-    padding-left: 0.2rem;
+    padding-left: 0.3rem;
     font-size: 0.9rem;
     line-height: 1.2rem;
     margin-bottom: 1.5rem;
     ::placeholder {
         color: #c2c2c2;
         /* font-weight: bold; */
-        font-size: 1rem;
-    }
-`;
-const TextArea = styled.textarea`
-    margin-left: 0.5rem;
-    width: 90%;
-    /* border: 1px solid gray; */
-    outline: none;
-    font-size: 1rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    margin-bottom: 1rem;
-    height: 3rem;
-    resize: none;
-    ::placeholder {
-        color: #c2c2c2;
-        font-weight: bold;
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 `;
 const ButtonContainer = styled.div`
