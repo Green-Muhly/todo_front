@@ -32,7 +32,6 @@ const customStyles = {
 const ModalHeader = styled.div`
   height: 15%;
   width: 95%;
-  /* background-color: rgb(125, 140, 255); */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -42,7 +41,7 @@ const ModalHeader = styled.div`
 const Title = styled.h2`
   font-weight: 600;
   font-size: 1.05rem;
-  font-family: sans-serif;
+  font-family: "Nunito";
   color: black;
   width: 80%;
 `;
@@ -50,7 +49,6 @@ const CloseBtn = styled.span`
   cursor: pointer;
   color: grey;
   font-size: 1.6rem;
-  font-family: sans-serif;
 `;
 const ModalBody = styled.div`
   background-color: white;
@@ -63,7 +61,7 @@ const ModalBody = styled.div`
 `;
 const Label = styled.div`
   margin-left: 0.5rem;
-  /* background-color: red; */
+  font-family: "Nunito";
   font-size: 0.8rem;
   font-weight: bolder;
   color: gray;
@@ -75,6 +73,7 @@ const Span = styled.span`
   border: none;
   font-size: 0.9rem;
   font-weight: bold;
+  font-family: "Nunito";
   line-height: 1.2rem;
   margin-bottom: 1.5rem;
 `;
@@ -85,6 +84,7 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   width: 35%;
   cursor: pointer;
+  font-family: "Nunito";
   border: 1px solid rgb(125, 140, 255);
   border-radius: 0.3rem;
   background-color: ${(props) =>
@@ -100,13 +100,14 @@ const Input = styled.input`
   border: none;
   border-left: 2px solid #c2c2c2;
   outline: none;
+  font-family: "Nunito";
   padding-left: 0.3rem;
   font-size: 0.9rem;
   line-height: 1.2rem;
   margin-bottom: 1.5rem;
   ::placeholder {
     color: #c2c2c2;
-    /* font-weight: bold; */
+    font-family: "Nunito";
     font-size: 0.9rem;
   }
 `;

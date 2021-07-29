@@ -34,8 +34,9 @@ const Bot = styled.div`
 
 const BotText = styled.span`
   color: rgb(125, 140, 255);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
+  font-family: "Nunito";
   cursor: ${(props) => (props.btn === true ? "pointer" : null)};
 `;
 
@@ -54,7 +55,7 @@ const MainContainer = observer(() => {
   };
 
   return (
-    <Container className="md:w-1/5 w-11/12 md:h-3/5 h-4/5 rounded-lg">
+    <Container className="lg:w-3/12 md:w-5/12 w-11/12 md:h-3/5 h-4/5 rounded-lg">
       <Top>
         <Today />
       </Top>
