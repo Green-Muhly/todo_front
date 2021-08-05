@@ -23,7 +23,7 @@ const CheckBox = styled.input`
 const Title = styled.span`
   font-size: 0.8rem;
   font-family: "Nunito";
-  width: 50%;
+  width: 55%;
 `;
 const DateText = styled.span`
   width: 25%;
@@ -61,7 +61,9 @@ const Todo = ({
         checked={checked}
         onChange={() => onToggle(id)}
       />
-      <Title onClick={() => onModalOpen()}>{title}</Title>
+      <Title onClick={() => onModalOpen()}>
+        {title.length > 12 ? `${title.substr(0, 12)}...` : title}
+      </Title>
       <DateText>{create_date}</DateText>
       <DelBtn onClick={() => onDelete(id)}>❌</DelBtn>
       <DetailModal

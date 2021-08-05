@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import components from "../components";
 import store from "../store";
@@ -19,6 +19,7 @@ const Top = styled.div`
   border-bottom: 1.5px solid rgba(125, 140, 255, 0.25);
 `;
 const Mid = styled.div`
+  overflow: auto;
   height: 80%;
   display: flex;
   justify-content: center;
@@ -53,6 +54,9 @@ const MainContainer = observer(() => {
     console.log(modalOpen);
     setModalOpen(true);
   };
+  useEffect(() => {
+    todoStore.saveTodo();
+  }, []);
 
   return (
     <Container className="lg:w-3/12 md:w-5/12 w-11/12 md:h-3/5 h-4/5 rounded-lg">
