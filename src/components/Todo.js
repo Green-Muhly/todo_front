@@ -41,7 +41,7 @@ const dateFormat = (date) => {
   const year = date.getFullYear();
   const month = date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth();
   const day =
-    date.getDate() + 1 < 10 ? `0${date.getDate() + 1}` : date.getDate() + 1;
+    date.getDate() + 1 < 9 ? `0${date.getDate() + 1}` : date.getDate() + 1;
 
   return `${year}.${month}.${day}`;
 };
@@ -57,6 +57,7 @@ const Todo = ({
   onUpdate,
 }) => {
   const date = new Date(createDate);
+  console.log(date, dateFormat(date));
   const { DetailModal } = components;
   const [modalOpen, setModalOpen] = useState(false);
   const onModalClose = () => {
