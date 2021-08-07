@@ -12,5 +12,5 @@
 
 ### 수정사항
 
-스토어 내 API 관리
-maincontainer에 스크롤바
+- [x] 스토어 내 API 관리
+- [x] maincontainer에 스크롤바
