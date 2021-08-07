@@ -1,3 +1,4 @@
+import axios from "axios";
 import { makeAutoObservable } from "mobx";
 import moment from "moment";
 import swal from "sweetalert";
@@ -34,7 +35,10 @@ class Todo {
   }
 
   saveTodo = async () => {
-    await API.get("/todos").then((res) => (this.todoList = res.data));
+    // await axios.get("/muhly/todos").then((res) => (this.todoList = res.data));
+    await axios
+      .get("http://54.180.9.121:8080/muhly/todos")
+      .then((res) => console.log(res));
   };
 
   createTodo = (name, value) => {
@@ -50,7 +54,7 @@ class Todo {
       swal("content을 채워주세요!", "", "error");
       return;
     }
-    await API.post("/todos", {
+    await API.post("/muhly/todos", {
       content,
     })
       .then((res) => console.log(res))
@@ -67,7 +71,7 @@ class Todo {
     console.log(this.todoList);
   };
   toggleTodo = async (id) => {
-    await API.put(`/todos/${id}`)
+    await API.put(`/muhly/todos/${id}`)
       .then((res) => console.log(res))
       .catch((e) => console.error(e));
     this.todoList = this.todoList.map((todo) =>
@@ -80,8 +84,8 @@ class Todo {
     );
   };
   deleteTodo = async (id) => {
-    console.log(id);
-    await API.delete(`/todos/${id}`)
+    // console.log(id);
+    await API.delete(`/muhly/todos/${id}`)
       .then((res) => console.log(res))
       .catch((e) => console.error(e));
     this.todoList = this.todoList.filter((todo) => todo.id !== id);
