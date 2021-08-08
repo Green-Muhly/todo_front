@@ -42,7 +42,7 @@ const dateFormat = (date) => {
   const month =
     date.getMonth() + 1 < 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
   const day =
-    date.getDay() + 1 < 9 ? `0${date.getDay() + 1}` : date.getDay() + 1;
+    date.getDate() + 1 < 9 ? `0${date.getDate() + 1}` : date.getDate() + 1;
 
   return `${year}.${month}.${day}`;
 };
